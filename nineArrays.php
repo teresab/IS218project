@@ -202,5 +202,75 @@ echo uniqid('bar_',true);
 /* prints
 bar_4bd67da367b650.43684647
 */
+
+// a complex array
+$myvar = array(
+    'hello',
+    42,
+    array(1,'two'),
+    'apple'
+);
+ 
+// convert to a string
+$string = serialize($myvar);
+ 
+echo $string;
+/* prints
+a:4:{i:0;s:5:"hello";i:1;i:42;i:2;a:2:{i:0;i:1;i:1;s:3:"two";}i:3;s:5:"apple";}
+*/
+ 
+// you can reproduce the original variable
+$newvar = unserialize($string);
+ 
+print_r($newvar);
+/* prints
+Array
+(
+    [0] => hello
+    [1] => 42
+    [2] => Array
+        (
+            [0] => 1
+            [1] => two
+        )
+ 
+    [3] => apple
+)
+*/
+
+$string =
+"Lorem ipsum dolor sit amet, consectetur
+adipiscing elit. Nunc ut elit id mi ultricies
+adipiscing. Nulla facilisi. Praesent pulvinar,
+sapien vel feugiat vestibulum, nulla dui pretium orci,
+non ultricies elit lacus quis ante. Lorem ipsum dolor
+sit amet, consectetur adipiscing elit. Aliquam
+pretium ullamcorper urna quis iaculis. Etiam ac massa
+sed turpis tempor luctus. Curabitur sed nibh eu elit
+mollis congue. Praesent ipsum diam, consectetur vitae
+ornare a, aliquam a nunc. In id magna pellentesque
+tellus posuere adipiscing. Sed non mi metus, at lacinia
+augue. Sed magna nisi, ornare in mollis in, mollis
+sed nunc. Etiam at justo in leo congue mollis.
+Nullam in neque eget metus hendrerit scelerisque
+eu non enim. Ut malesuada lacus eu nulla bibendum
+id euismod urna sodales. ";
+ 
+$compressed = gzcompress($string);
+ 
+echo "Original size: ". strlen($string)."\n";
+/* prints
+Original size: 800
+*/
+ 
+ 
+ 
+echo "Compressed size: ". strlen($compressed)."\n";
+/* prints
+Compressed size: 418
+*/
+ 
+// getting it back
+$original = gzuncompress($compressed);
 </body>
 </html>
