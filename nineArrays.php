@@ -172,5 +172,35 @@ echo "System time: ".
 User time: 1.424592
 System time: 0.004204
 */
+
+// generate unique string
+echo uniqid();
+/* prints
+4bd67c947233e
+*/
+ 
+// generate another unique string
+echo uniqid();
+/* prints
+4bd67c9472340
+*/
+
+// with prefix
+echo uniqid('foo_');
+/* prints
+foo_4bd67d6cd8b8f
+*/
+ 
+// with more entropy
+echo uniqid('',true);
+/* prints
+4bd67d6cd8b926.12135106
+*/
+ 
+// both
+echo uniqid('bar_',true);
+/* prints
+bar_4bd67da367b650.43684647
+*/
 </body>
 </html>
