@@ -271,6 +271,18 @@ Compressed size: 418
 */
  
 // getting it back
+
 $original = gzuncompress($compressed);
+
+// capture the start time
+$start_time = microtime(true);
+ 
+// do some stuff
+// ...
+ 
+// display how long the script took
+echo "execution took: ".
+        (microtime(true) - $start_time).
+        " seconds.";
 </body>
 </html>
